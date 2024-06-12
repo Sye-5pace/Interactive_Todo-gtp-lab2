@@ -1,5 +1,6 @@
-interface Todo {
+export interface Todo {
     title: string,
     description: string,
-    time: string;
+    time: Date;
+    completed: boolean;
 }
