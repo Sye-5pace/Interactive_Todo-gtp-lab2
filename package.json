@@ -1,16 +1,17 @@
 {
-  "name": "interactive-todo-gtp-lab2",
+  "name": "interactive_todo-gtp-lab2",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
-    "sass": "^1.77.5",
-    "typescript": "^5.2.2",
     "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "sass": "^1.77.5"
   }
 }

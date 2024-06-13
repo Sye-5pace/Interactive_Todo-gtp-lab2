@@ -1,0 +1,122 @@
+$primary-color: #377dff;
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: 24px;
+    color: $primary-color;
+  }
+
+  #error-alert {
+    color: red;
+    padding: 5px;
+    border-radius: 3px;
+    display: none; 
+  }
+}
+
+.input-section {
+  display: flex;
+  align-items: center;
+
+  input[type="text"],
+  input[type="datetime-local"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-right: 10px;
+  }
+
+  button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    background-color: $primary-color;
+    color: #fff;
+    cursor: pointer;
+
+    i {
+      font-size: 18px;
+    }
+  }
+}
+
+.todos-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .dropdown {
+    position: relative;
+
+    label {
+      cursor: pointer;
+    }
+
+    #filter-select {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: none; 
+    }
+  }
+
+  #delete-all {
+    background-color: #f00; 
+    color: #fff;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    text-align: left;
+  }
+}
+
+// Styles for different todo statuses
+.todo-pending {
+  color: #ccc; 
+}
+
+.todo-completed {
+  text-decoration: line-through;
+  color: #333; 
+
+}
+
+.todo-overdue {
+  color: red; 
+}

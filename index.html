@@ -1,37 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./src/styles/main.scss">
-  <title>Todo app</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo</title>
+  <link rel="stylesheet" href="./style.scss">
 </head>
 <body>
-  <header>
-    <h1>Todo</h1>
-    <section>
-      <input type="text" id="todo-title" placeholder="Title"></input>
-      <input type="text" id="todo-desc" placeholder="Description (Optional)"></input>
-      <input type="datetime-local" id="todo-due-date"></input>
-      <button id="add-todo">Add Todo</button>
-    </section>
-    <ul id="sort-options">
-      <li>
-        <button data-sort="date-asc">sort date (asc)</button>
-      </li>
-      <li>
-        <button data-sort="date-desc">sort (des)</button>
-      </li>
-    </ul>
-  </header>
-  <main>
-    <section id="todo-list">
-      </section>
-  </main>
-  <script type="module" src="./src/main.js"></script>
+  <div class="container">
+    <header>
+      <h1>Todo List</h1>
+      <div id="error-alert" class="alert-message">Fill in todo </div>
+      <div class="input-section">
+        <input id="todo-name" type="text" placeholder="Add a todo . . ." />
+        <input id="todo-duedate" type="datetime-local" />
+        <button id="add-todobtn">
+          <i class="bx bx-plus bx-sm"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="todos-filter">
+      <div class="dropdown">
+        <label for="filter-select" >Filter</label>
+        <select id="filter-select">
+          <option value="all">All</option>
+          <option value="pending">Pending</option>
+          <option value="completed">Completed</option>
+          <option value="time and date">Time and date</option>
+        </select>
+      </div>
+      <button id="delete-all" >
+        Delete All
+      </button>
+    </div>
+
+    <table class="table w-full">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Due Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="todo-table">
+        </tbody>
+    </table>
+    <script src="main.js"></script>
+  </div>
 </body>
 </html>
