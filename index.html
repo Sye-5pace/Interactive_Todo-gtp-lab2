@@ -11,19 +11,19 @@
   <div class="container">
     <header>
       <h1>Todo List</h1>
-      <div id="error-alert" class="alert-message">Fill in todo </div>
       <div class="input-section">
-        <input id="todo-name" type="text" placeholder="Add a todo . . ." />
-        <input id="todo-duedate" type="datetime-local" />
-        <button id="add-todobtn">
-          <i class="bx bx-plus bx-sm"></i>
+        <input id="todoName" type="text" placeholder="Add a todo . . ." />
+        <input id="todoDueDate" type="datetime-local" />
+        <button id="addBtn">
+          <p class="bx bx-plus bx-sm">add</p>
         </button>
       </div>
+      <div id="error-alert" class="alert-message">Fill in todo</div>
     </header>
 
     <div class="todos-filter">
       <div class="dropdown">
-        <label for="filter-select" >Filter</label>
+        <label for="filter-select" class="btn m-1">Filter</label>
         <select id="filter-select">
           <option value="all">All</option>
           <option value="pending">Pending</option>
@@ -31,7 +31,7 @@
           <option value="time and date">Time and date</option>
         </select>
       </div>
-      <button id="delete-all" >
+      <button id="delete-all" class="btn btn-secondary delete-all-btn">
         Delete All
       </button>
     </div>
@@ -48,7 +48,7 @@
       <tbody id="todo-table">
         </tbody>
     </table>
-    <script src="main.js"></script>
+    <script src="todoHelpers.js"></script>
   </div>
 </body>
 </html>
