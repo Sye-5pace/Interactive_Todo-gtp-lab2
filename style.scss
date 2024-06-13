@@ -152,11 +152,11 @@ header {
 
 table {
   width: 100%;
-  border-collapse: collapse;
-
+  // border-collapse: collapse;
+  
   th,
   td {
-    width:auto;
+    width: auto;
     padding: 10px;
     border: 1px solid #ddd;
   }

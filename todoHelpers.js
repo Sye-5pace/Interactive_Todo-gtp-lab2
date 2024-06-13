@@ -41,7 +41,7 @@ const displayTodos = (data = []) => {
             <td>${todo.name}</td>
             <td>${new Date(todo.dueDate).toLocaleString()}</td>
             <td>${todo.completed ? 'Completed' : 'Pending'}</td>
-            <td style="display:flex, ">
+            <td style="display:flex, gap:1rem">
                 <img src="./images/checkmark.png" onclick="deleteTodo(${index})"  style="cursor: pointer; width: 20px; height: 20px;"/>
                 <img src="./images/delete_8847462.png" onclick="deleteTodo(${index})"  style="cursor: pointer; width: 20px; height: 20px;"/>
                 <img src="./images/pen_211744.png" onclick="editTodo(${index})"  style="cursor: pointer; width: 20px; height: 20px;"/>
