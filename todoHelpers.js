@@ -7,6 +7,26 @@ const deleteAllBtn = document.getElementById("delete-all")
 const filterLabel = document.querySelector('label[for="filter-select"]');
 
 
+
+todoNameInput.addEventListener('input', () => {
+    validateInput();
+});
+
+todoDueDateInput.addEventListener('input', () => {
+    validateInput();
+});
+
+const validateInput = () => {
+    const todoName = todoNameInput.value.trim(); // Trim leading/trailing whitespace
+    const todoDueDate = todoDueDateInput.value;
+  
+    if (!todoName || !todoDueDate) {
+      errorAlert.style.display = 'block';
+    } else {
+      errorAlert.style.display = 'none';
+    }
+};
+
 const todos = [];
     
 const addTodo = () => {
