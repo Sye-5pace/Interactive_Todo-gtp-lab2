@@ -4,9 +4,11 @@ const addTodoButton = document.getElementById('addBtn');
 const errorAlert = document.getElementById('error-alert');
 const todoTable = document.getElementById('todo-table');
 const deleteAllBtn = document.getElementById("delete-all")
+const filterLabel = document.querySelector('label[for="filter-select"]');
+
 
 const todos = [];
-
+    
 const addTodo = () => {
     const todoName = todoNameInput.value;
     const todoDueDate = todoDueDateInput.value;
@@ -23,12 +25,9 @@ const addTodo = () => {
     };
 
     todos.push(todo);
-
     todoNameInput.value = "";
     todoDueDateInput.value = "";
-
     errorAlert.style.display = 'none';
-
     displayTodos();
 };
 
@@ -88,5 +87,10 @@ const deleteAllTodos = () => {
     displayTodos();
 };
 
+const filterSelect = document.getElementById('filter-select');
+filterSelect.addEventListener('change', (event) => {
+    const selectedValue = event.target.value;
+    filterTodos(selectedValue);
+});
 deleteAllBtn.addEventListener('click', deleteAllTodos);
 addTodoButton.addEventListener('click', addTodo);
