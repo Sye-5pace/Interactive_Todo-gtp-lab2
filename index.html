@@ -16,29 +16,31 @@
     <section class="input-section">
       <input id="todoName" type="text" placeholder="Add a todo . . ." />
       <input id="todoDueDate" type="datetime-local" />
-      <button id="addBtn">
-        <p class="bx bx-plus bx-sm">add</p>
-      </button>
     </section>
     <div id="error-alert" class="alert-message">Fill in todo</div>
   </header>
   <main>
     <div class="todos-filter">
-      <div class="dropdown">
-        <label for="filter-select" class="btn m-1">Filter</label>
-        <select id="filter-select">
-          <option value="all">All</option>
-          <option value="pending">Pending</option>
-          <option value="completed">Completed</option>
-          <option value="time and date">Time and date</option>
-        </select>
+      <div class="first-filter">
+        <button id="addBtn">
+          <p class="bx bx-plus bx-sm">add</p>
+        </button>
+        <div class="dropdown">
+          <label for="filter-select" class="btn m-1">Filter</label>
+          <select id="filter-select">
+            <option value="all">All</option>
+            <option value="pending">Pending</option>
+            <option value="completed">Completed</option>
+            <option value="time and date">Time and date</option>
+          </select>
+        </div>
       </div>
       <button id="delete-all" class="btn btn-secondary delete-all-btn">
-        Delete All
+        <p>delete all</p>
       </button>
     </div>
 
-    <table class="table w-full">
+    <table class="table ">
       <thead>
         <tr>
           <th>Task</th>
@@ -48,7 +50,7 @@
         </tr>
       </thead>
       <tbody id="todo-table">
-        </tbody>
+      </tbody>
     </table>
   </main>  
   <script src="./todoHelpers.js"></script>

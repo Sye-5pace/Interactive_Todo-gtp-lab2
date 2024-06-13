@@ -41,10 +41,10 @@ const displayTodos = (data = []) => {
             <td>${todo.name}</td>
             <td>${new Date(todo.dueDate).toLocaleString()}</td>
             <td>${todo.completed ? 'Completed' : 'Pending'}</td>
-            <td>
-                <button onclick="toggleCompleted(${index})">Mark as done</button>
-                <button onclick="deleteTodo(${index})">Delete</button>
-                <button onclick="editTodo(${index})">Edit</button>
+            <td style="display:flex, ">
+                <img src="./images/checkmark.png" onclick="deleteTodo(${index})"  style="cursor: pointer; width: 20px; height: 20px;"/>
+                <img src="./images/delete_8847462.png" onclick="deleteTodo(${index})"  style="cursor: pointer; width: 20px; height: 20px;"/>
+                <img src="./images/pen_211744.png" onclick="editTodo(${index})"  style="cursor: pointer; width: 20px; height: 20px;"/>
             </td>
         `;
         todoTable.appendChild(todoRow);
