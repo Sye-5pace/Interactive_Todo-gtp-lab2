@@ -85,10 +85,6 @@ const filterTodos = (status: string): void => {
 }
 
 
-const deleteTodo = (index: number): void => {
-    todos.splice(index, 1);
-    displayTodos();
-}
 
 const deleteAllTodos = (): void => {
     todos = [];
