@@ -1,34 +1,22 @@
-const todoNameInput = document.getElementById('todoName');
-const todoDueDateInput = document.getElementById('todoDueDate');
-const addTodoButton = document.getElementById('addBtn');
-const errorAlert = document.getElementById('error-alert');
-const todoTable = document.getElementById('todo-table');
-const deleteAllBtn = document.getElementById("delete-all")
-const filterLabel = document.querySelector('label[for="filter-select"]');
-const filterSelect = document.getElementById('filter-select');
+import { Todo } from './interface'
 
+const todoNameInput = document.getElementById('todoName') as HTMLInputElement;
+const todoDueDateInput = document.getElementById('todoDueDate') as HTMLInputElement;
+const addTodoButton = document.getElementById('addBtn') as HTMLButtonElement;
+const errorAlert = document.getElementById('error-alert') as HTMLElement;
+const todoTable = document.getElementById('todo-table') as HTMLTableElement;
+const deleteAllBtn = document.getElementById('delete-all') as HTMLButtonElement;
+const filterLabel = document.querySelector('label[for="filter-select"]') as HTMLLabelElement;
+const filterSelect = document.getElementById('filter-select') as HTMLSelectElement;
 
-todoNameInput.addEventListener('input', () => {
-    validateInput();
-});
-
-todoDueDateInput.addEventListener('input', () => {
-    validateInput();
-});
-
-const validateInput = () => {
-    const todoName = todoNameInput.value.trim(); // Trim leading/trailing whitespace
+let todos: Todo[] = [];
+const validateInput = (): void =>{
+    const todoName = todoNameInput.value.trim();
     const todoDueDate = todoDueDateInput.value;
-    if (!todoName || !todoDueDate) {
-      errorAlert.style.display = 'block';
-    } else {
-      errorAlert.style.display = 'none';
-    }
-};
+    errorAlert.style.display = (!todoName || !todoDueDate) ? 'block' : 'none';
+}
 
-const todos = [];
-    
-const addTodo = () => {
+const addTodo = (): void => {
     const todoName = todoNameInput.value;
     const todoDueDate = todoDueDateInput.value;
 
@@ -37,20 +25,24 @@ const addTodo = () => {
         return;
     }
 
-    const todo = {
+    const todo: Todo = {
         name: todoName,
         dueDate: todoDueDate,
         completed: false
     };
 
     todos.push(todo);
-    todoNameInput.value = "";
-    todoDueDateInput.value = "";
+    clearInputs();
     errorAlert.style.display = 'none';
     displayTodos();
-};
+}
 
-const createTodoRow = (todo, index) => {
+const clearInputs= (): void => {
+    todoNameInput.value = '';
+    todoDueDateInput.value = '';
+}
+
+const createTodoRow = (todo: Todo, index: number): HTMLTableRowElement => {
     const todoRow = document.createElement('tr');
     todoRow.innerHTML = `
         <td>${todo.name}</td>
@@ -65,26 +57,24 @@ const createTodoRow = (todo, index) => {
     return todoRow;
 }
 
-
-const displayTodos = (data = []) => {
+const displayTodos = (data: Todo[] = []): void => {
     todoTable.innerHTML = '';
-    const newTodos = data.length ? data : todos.slice(); // Use slice() to copy array
+    const newTodos = data.length ? data : todos.slice();
     newTodos.forEach((todo, index) => {
         const todoRow = createTodoRow(todo, index);
         todoTable.appendChild(todoRow);
     });
-};
+}
 
-
-const editTodo = (index) => {
+const editTodo = (index: number): void => {
     const todo = todos[index];
     todoNameInput.value = todo.name;
     todoDueDateInput.value = todo.dueDate;
     deleteTodo(index);
 }
 
-const filterTodos = (status) => {
-    let filteredTodos = [];
+const filterTodos = (status: string): void => {
+    let filteredTodos: Todo[] = [];
     switch (status) {
         case 'completed':
             filteredTodos = todos.filter(todo => todo.completed);
@@ -99,30 +89,33 @@ const filterTodos = (status) => {
     displayTodos(filteredTodos);
 }
 
-const toggleCompleted = (index) => {
-    todos[index].completed = !todos[index].completed;
-    displayTodos();
-};
+// const toggleCompleted = (index: number): void => {
+//     todos[index].completed = !todos[index].completed;
+//     displayTodos();
+// }
 
-const deleteTodo = (index) => {
+const deleteTodo = (index: number): void => {
     todos.splice(index, 1);
     displayTodos();
-};
+}
 
-const deleteAllTodos = () => {
-    todos.splice(0, todos.length);
+const deleteAllTodos = (): void => {
+    todos = [];
     displayTodos();
-};
+}
 
 filterLabel.addEventListener('click', () => {
-    const filterSelect = document.getElementById('filter-select');
     filterSelect.style.display = filterSelect.style.display === 'none' ? 'block' : 'none';
 });
 
 filterSelect.addEventListener('change', (event) => {
-    const selectedValue = event.target.value;
+    const selectedValue = (event.target as HTMLSelectElement).value;
     console.log(`Selected filter: ${selectedValue}`);
     filterTodos(selectedValue);
 });
+
+todoNameInput.addEventListener('input', validateInput);
+todoDueDateInput.addEventListener('input', validateInput);
 deleteAllBtn.addEventListener('click', deleteAllTodos);
 addTodoButton.addEventListener('click', addTodo);
+displayTodos()
