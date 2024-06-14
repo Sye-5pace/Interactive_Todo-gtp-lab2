@@ -66,12 +66,7 @@ const displayTodos = (data: Todo[] = []): void => {
     });
 }
 
-const editTodo = (index: number): void => {
-    const todo = todos[index];
-    todoNameInput.value = todo.name;
-    todoDueDateInput.value = todo.dueDate;
-    deleteTodo(index);
-}
+
 
 const filterTodos = (status: string): void => {
     let filteredTodos: Todo[] = [];
