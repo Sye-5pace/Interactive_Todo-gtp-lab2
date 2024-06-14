@@ -89,10 +89,6 @@ const filterTodos = (status: string): void => {
     displayTodos(filteredTodos);
 }
 
-// const toggleCompleted = (index: number): void => {
-//     todos[index].completed = !todos[index].completed;
-//     displayTodos();
-// }
 
 const deleteTodo = (index: number): void => {
     todos.splice(index, 1);
